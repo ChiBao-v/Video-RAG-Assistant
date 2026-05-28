@@ -103,6 +103,27 @@ http://127.0.0.1:8000
 
 Paste a YouTube URL, wait for the transcript and vector index pipeline to finish, then ask questions about the video.
 
+## Test the Web Interface
+
+After starting the local web server, open:
+
+```text
+http://127.0.0.1:8000
+```
+
+Use the web UI to test the main workflow:
+
+1. Paste a YouTube video URL.
+2. Click `Go`.
+3. Wait until the indexing job is completed.
+4. Select the processed video from the library.
+5. Ask a question in the chat box.
+6. Open the retrieval panel to inspect source chunks and timestamps.
+
+You can also switch between light and dark mode using the theme button in the sidebar.
+
+![Web Interface](image/ui.png)
+
 ## CLI Usage
 
 Scrape a video and build the knowledge base:
