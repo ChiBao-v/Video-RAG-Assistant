@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube RAG Studio</title>
+  <link rel="stylesheet" href="/static/app.css?v=5">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">YR</div>
+        <div>
+          <h1>YouTube RAG Studio</h1>
+          <p>Video knowledge workspace</p>
+        </div>
+        <button id="themeToggle" class="icon-button theme-toggle" type="button" title="Đổi chế độ sáng tối" aria-label="Đổi chế độ sáng tối">☼</button>
+      </div>
+
+      <form id="ingestForm" class="ingest-panel">
+        <label for="videoUrl">YouTube video</label>
+        <div class="url-row">
+          <input id="videoUrl" name="videoUrl" type="url" placeholder="https://www.youtube.com/watch?v=..." required>
+          <button type="submit" title="Xử lý video">Go</button>
+        </div>
+        <label class="toggle-row">
+          <input id="transcribeMissing" type="checkbox">
+          <span>Tự transcribe nếu không có phụ đề</span>
+        </label>
+      </form>
+
+      <div class="job-panel" id="jobPanel" hidden>
+        <div class="job-head">
+          <span id="jobStage">Queued</span>
+          <strong id="jobProgressText">0%</strong>
+        </div>
+        <div class="progress-track"><div id="jobProgress" class="progress-bar"></div></div>
+        <pre id="jobLog"></pre>
+      </div>
+
+      <div class="library-head">
+        <span>Library</span>
+        <button id="refreshVideos" type="button" title="Làm mới">Refresh</button>
+      </div>
+      <div id="videoList" class="video-list"></div>
+    </aside>
+
+    <main class="workspace">
+      <section class="video-hero" id="videoHero">
+        <div class="empty-state">
+          <h2>Chọn một video hoặc gửi link mới</h2>
+          <p>App sẽ crawl transcript, build vector index, lưu thành dataset, rồi mở một khung hỏi đáp có nguồn timestamp.</p>
+        </div>
+      </section>
+
+      <section class="chat-surface">
+        <div id="messages" class="messages">
+          <div class="message assistant">
+            <div class="bubble">Mình sẵn sàng trả lời khi bạn chọn một video đã xử lý xong.</div>
+          </div>
+        </div>
+        <form id="askForm" class="ask-form">
+          <input id="questionInput" type="text" placeholder="Hỏi về nội dung video..." disabled>
+          <button id="askButton" type="submit" disabled>Ask</button>
+        </form>
+      </section>
+
+      <section class="support-grid">
+        <details class="evidence-panel" id="evidencePanel">
+          <summary>Kiểm chứng truy xuất</summary>
+          <div class="evidence-actions">
+            <button id="evidenceButton" type="button">Cập nhật đoạn liên quan</button>
+          </div>
+          <div id="evidenceList" class="evidence-list">Chưa có kết quả truy xuất.</div>
+        </details>
+        <details class="evidence-panel" id="systemLogPanel">
+          <summary>Nhật ký hệ thống</summary>
+          <pre id="jobLogMirror">Chưa có job đang chạy.</pre>
+        </details>
+      </section>
+    </main>
+  </div>
+<script src="/static/app.js?v=5"></script>
+</body>
+</html>

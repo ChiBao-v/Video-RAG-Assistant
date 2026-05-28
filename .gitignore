@@ -1,0 +1,34 @@
+# Environment variables and secrets
+.env
+**/.env
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache/build files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# App-generated data and indexes
+local/
+*.faiss
+*_embeddings.npy
+*_rag.jsonl
+
+# Logs
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
